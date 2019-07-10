@@ -4,29 +4,66 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 
 
 ## Question 1
+```
+ //Create an instance of a dictionary called `citiesDict` that maps 3 countries to their capital cities.
+var citiesDict = ["Arizona": "Pheonix", "California": "Sacramento", "Florida": "Tallahassee"]
 
-- Create an instance of a dictionary called `citiesDict` that maps 3 countries to their capital cities.
+// Add two more countries to your dictionary.
+citiesDict["Conneticut"] = "Hartford"
+print(citiesDict)
 
-- Add two more countries to your dictionary.
-
-- Translate at least 3 of the capital names into another language.
+//Translate at least 3 of the capital names into another language.
+citiesDict["Arizona"] = "Phéanix"
+citiesDict["California"] = "Sacramintocita"
+citiesDict["Florida"] = "El Tallahassee"
+print(citiesDict)
+```
 
 
 ## Question 2
 
-`var someDict:[String:Int] = ["One": 1, "Two": 4, "Three": 9, "Four": 16, "Five": 25]`
+`var someDict:[String:Int] = ["One": 1, "Two": 4, "Three": 9, "Four": 16, "Five": 25]
+`
 
 - Using `someDict`, add together the values associated with "Three" and "Five" and print the result.
-
+```var someDict:[String:Int] = ["One": 1, "Two": 4, "Three": 9, "Four": 16, "Five": 25]
+var sum = 0
+sum += someDict["Three"]! + someDict["Five"]!
+print(sum)
+```
 - Add values to the dictionary for the keys "Six" and "Seven".
-
+```
+someDict["Six"] = 65
+someDict["Seven"] = 7
+```
 - Make a key called `productUpToSeven` and set its value equal to the product of all the values.
+`var someDict:[String:Int] = ["One": 1, "Two": 4, "Three": 9, "Four": 16, "Five": 25]
+var product = 1
+for value in someDict.values {
+sum *= value
+}
+someDict["productUpToSeven"] = product`
+
 
 - Make a key called `sumUpToSix` and set its value equal to the sum of the keys "One", "Two", "Three", "Four", "Five" and "Six".
+`var someDict:[String:Int] = ["One": 1, "Two": 4, "Three": 9, "Four": 16, "Five": 25]
+var sum = 0
+for value in someDict.values {
+if let one = someDict["One"],  let two = someDict["Two"], let three = someDict["Three"], let four = someDict["Four"], let five = someDict["Five"], let six = someDict["Six"] {
+sum += value
+}
+}
+someDict["sumUpToSix"] = sum
+`
 
 - Remove the new keys made in the previous two steps
-
+`someDict["productUpToSeven"] = nil
+someDict.removeValue(forKey: "sumUpToSix"`
 - Add 2 to every value inside of `someDict`.
+`for (k, v) in someDict {
+someDict[k] = v + 2
+}
+print(someDict)`
 
 
 ## Question 3
@@ -41,16 +78,28 @@ Create a variable that is explicitly typed as a dictionary that maps strings to 
 | C.S. Lewis | 9.9 |
 | Jon Krakauer | 6.1 |
 
+```var authors = ["Mark Twain": 8.9, "Nathaniel Hawthorne": 5.1, "John Steinbeck": 2.3, "C.S. Lewis": 9.9, "Jon Krakauer": 6.1]```
+
 Using the dictionary created in the previous problem, do the following:
 
 - Print out the floating-point score for “John Steinbeck”.
-
+`print(authors["John Steinbeck"]!)`
 - Add an additional author named “Erik Larson” with an assigned score of 9.2.
+`authors["Erik Larson"] = 92`
 
 - Write an if/else statement that compares the score of John Krakaur with Mark Twain. Print out the name of the author with the highest score.
-
+`if let a1 = authors["Jon Krakauer"], let a2 = authors["Erik Larson"] {
+if a1 > a2 {
+print("Jon KraKaur")
+}
+else {
+print("Erik Larson")
+}
+}`
 - Use a for-loop to iterate through the dictionary you created at the beginning of the problem, and print out the content in the form of key: value, one entry per line.
-
+`for (k,v) in authors {
+print (k,v)
+}`
 
 ## Question 4
 
@@ -87,11 +136,30 @@ var code = [
 ]
 
 var message = "hello world"
+var empty = ""
+code [" "] = " "
+for k in message {
+if let mycode = code[String(k)] {
+empty += mycode
+}
+}
+print(empty)
+
 ```
 
 You are also given an `encodedMessage` which contains only lowercase letters and spaces. Use the `code` dictionary to decode the message and print it.
-`var encodedMessage = "uijt nfttbhf jt ibse up sfbe"`
 
+`var encodedMessage = "uijt nfttbhf jt ibse up sfbe"
+code [" "] = " "
+var uncodede = " "
+for k in encodedMessage {
+for (key, value) in code {
+if value == String(k) {
+uncodede += key
+}
+}
+}
+print(uncodede)`
 
 ## Question 5
 
